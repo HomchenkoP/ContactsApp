@@ -21,7 +21,6 @@ const val REQUEST_CODE = 42
 class ContactsFragment : Fragment() {
 
     companion object {
-        @JvmStatic
         fun newInstance() = ContactsFragment()
     }
 
@@ -88,7 +87,7 @@ class ContactsFragment : Fragment() {
             REQUEST_CODE -> {
                 // Проверяем, дано ли пользователем разрешение по нашему запросу
                 if ((grantResults.isNotEmpty() &&
-                            grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                            grantResults.first() == PackageManager.PERMISSION_GRANTED)
                 ) {
                     getContacts()
                 } else {
